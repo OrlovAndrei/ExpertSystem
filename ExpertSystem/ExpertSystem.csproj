@@ -1,0 +1,140 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\apple-iphone-12-pro--.jpg" />
+    <None Remove="Resources\apple-iphone-13-mini.jpg" />
+    <None Remove="Resources\apple-iphone-13.jpg" />
+    <None Remove="Resources\apple-iphone-14-plus.jpg" />
+    <None Remove="Resources\apple-iphone-14.jpg" />
+    <None Remove="Resources\huawei-mate-50-pro.jpg" />
+    <None Remove="Resources\huawei-mate-50.jpg" />
+    <None Remove="Resources\huawei-mate-50e.jpg" />
+    <None Remove="Resources\huawei-nova-10-pro.jpg" />
+    <None Remove="Resources\huawei-nova10-se.jpg" />
+    <None Remove="Resources\nokia-c31.jpg" />
+    <None Remove="Resources\nokia-g11-plus.jpg" />
+    <None Remove="Resources\nokia-g400-5g.jpg" />
+    <None Remove="Resources\nokia-g60-5g.jpg" />
+    <None Remove="Resources\nokia-x30-5g.jpg" />
+    <None Remove="Resources\samsung-galaxy-a04.jpg" />
+    <None Remove="Resources\samsung-galaxy-a04e.jpg" />
+    <None Remove="Resources\samsung-galaxy-a04s.jpg" />
+    <None Remove="Resources\samsung-galaxy-a13-a137.jpg" />
+    <None Remove="Resources\samsung-galaxy-f13.jpg" />
+    <None Remove="Resources\Smartphones.json" />
+    <None Remove="Resources\xiaomi-12t-.jpg" />
+    <None Remove="Resources\xiaomi-12t-pro-.jpg" />
+    <None Remove="Resources\xiaomi-civi2.jpg" />
+    <None Remove="Resources\xiaomi-redmi-a1-plus-new.jpg" />
+    <None Remove="Resources\xiaomi-redmi-note-11r.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\apple-iphone-12-pro--.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\apple-iphone-13-mini.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\apple-iphone-13.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\apple-iphone-14-plus.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\apple-iphone-14.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\huawei-mate-50-pro.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\huawei-mate-50.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\huawei-mate-50e.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\huawei-nova-10-pro.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\huawei-nova10-se.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\nokia-c31.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\nokia-g11-plus.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\nokia-g400-5g.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\nokia-g60-5g.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\nokia-x30-5g.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\samsung-galaxy-a04.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\samsung-galaxy-a04e.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\samsung-galaxy-a04s.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\samsung-galaxy-a13-a137.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\samsung-galaxy-f13.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Smartphones.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\xiaomi-12t-.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\xiaomi-12t-pro-.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\xiaomi-civi2.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\xiaomi-redmi-a1-plus-new.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\xiaomi-redmi-note-11r.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
