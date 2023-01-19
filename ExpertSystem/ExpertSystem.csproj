@@ -102,9 +102,6 @@
     <Resource Include="Resources\samsung-galaxy-f13.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Smartphones.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\xiaomi-12t-.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
