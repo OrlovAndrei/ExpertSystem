@@ -36,18 +36,6 @@ using (var sr = new StreamReader("Sources.txt"))
                                 }
                             }
 
-                            //Console.WriteLine(string.Join(' ', document.DocumentNode.SelectSingleNode(".//h1[@class='specs-phone-name-title']").InnerHtml.Split(" ")[1..]));
-                            //Console.WriteLine(document.DocumentNode.SelectSingleNode(".//h1[@class='specs-phone-name-title']").InnerHtml.Split(" ")[0]);
-                            ////Console.WriteLine(string.Join(' ', document.DocumentNode.SelectSingleNode(".//td[@data-spec='price']//a").InnerHtml.Split(' ', '.', ';')[0..]));
-                            //Console.WriteLine(document.DocumentNode.SelectSingleNode(".//a[@data-spec='nettech']").InnerHtml);
-                            //Console.WriteLine(int.Parse(document.DocumentNode.SelectSingleNode(".//span[@data-spec='ramsize-hl']").InnerHtml[0].ToString()));
-                            //Console.WriteLine(int.Parse(document.DocumentNode.SelectSingleNode(".//span[@data-spec='storage-hl']").InnerHtml.Split("GB")[0]));
-                            //Console.WriteLine(document.DocumentNode.SelectSingleNode(".//td[@data-spec='os']").InnerHtml.Split(" ")[0]);
-                            //Console.WriteLine(string.Concat(document.DocumentNode.SelectSingleNode(".//td[@data-spec='displayresolution']").InnerHtml.Split(" ")[0..3]));
-                            //Console.WriteLine(double.Parse(document.DocumentNode.SelectSingleNode(".//td[@data-spec='displaysize']").InnerHtml.Split(" ")[0].Replace('.', ',')));
-                            //Console.WriteLine(document.DocumentNode.SelectSingleNode(".//td[@data-spec='cam1modules']").InnerHtml.Split(" ")[0] != "No");
-                            //Console.WriteLine(imageUrl[startNameIndex..]);
-
                             smartphones.Add(new Smartphone()
                             {
                                 Name = string.Join(' ', document.DocumentNode.SelectSingleNode(".//h1[@class='specs-phone-name-title']").InnerHtml.Split(" ")[1..]),
