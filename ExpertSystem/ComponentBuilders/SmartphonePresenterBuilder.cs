@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using ExpertSystem.Model;
 using System.Windows.Media.Imaging;
 using System;
+using System.Linq;
 
 namespace ExpertSystem.ComponentBuilders
 {
@@ -11,10 +12,7 @@ namespace ExpertSystem.ComponentBuilders
         static public Grid Build(Smartphone smartphone)
         {
             var grid = new Grid();
-            for (int i = 0; i < 10; i++)
-            {
-                grid.RowDefinitions.Add(new RowDefinition());
-            }
+            grid.RowDefinitions.Add(new RowDefinition());
             grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(0.3, GridUnitType.Star) });
             grid.ColumnDefinitions.Add(new ColumnDefinition());
             grid.ColumnDefinitions.Add(new ColumnDefinition());
@@ -35,48 +33,51 @@ namespace ExpertSystem.ComponentBuilders
 
             grid.Children.Add(name);
 
-            var image = new Image();
-            Grid.SetRow(image, 1);
-            Grid.SetRowSpan(image, 9);
-            Grid.SetColumn(image, 0);
+            var props = smartphone
+                .GetType()
+                .GetProperties()
+                .Where(p => Attribute.IsDefined(p, typeof(LabelAttribute)));
+            var j = 0;
 
-            image.Source = new BitmapImage(new Uri("Resources\\" + smartphone.Image, UriKind.Relative));
-            grid.Children.Add(image);
-
-            var isCamera = smartphone.IsCamera ? "Есть" : "Нет";
-            string[,] propList =
+            foreach (var prop in props)
             {
-                { "Цена:", $"{smartphone.Price}$" },
-                { "Компания:", $"{smartphone.Company}" },
-                { "Сеть:", $"{smartphone.Network}" },
-                { "OS:", $"{smartphone.OS}" },
-                { "Оперативная память:", $"{smartphone.RAM}GB" },
-                { "Память:", $"{smartphone.Storage}GB" },
-                { "Разрешение экрана:", $"{smartphone.Resolution}" },
-                { "Размер:", $"{smartphone.Size}\"" },
-                { "Камера:", $"{isCamera}" }
-            };
+                grid.RowDefinitions.Add(new RowDefinition());
 
-            for (int i = 0; i<propList.GetLength(0); i++)
-            {
+                var attribute = prop.GetCustomAttributes(true).OfType<LabelAttribute>().First();
+
                 TextBlock propName = new TextBlock()
                 {
-                    Text = propList[i, 0],
+                    Text = attribute.LabelText,
                     Padding = new Thickness(10.0, 0.0, 10.0, 0.0),
                 };
-                Grid.SetRow(propName, i+1);
+                Grid.SetRow(propName, j+1);
                 Grid.SetColumn(propName, 1);
                 grid.Children.Add(propName);
 
                 TextBlock propValue = new TextBlock()
                 {
-                    Text = propList[i, 1],
                     Padding = new Thickness(10.0, 0.0, 10.0, 0.0),
                 };
-                Grid.SetRow(propValue, i+1);
+
+                if (prop.GetValue(smartphone) is bool)
+                    propValue.Text = (bool)prop.GetValue(smartphone) ? "Есть" : "Нет";
+                else
+                    propValue.Text = prop.GetValue(smartphone).ToString() + attribute.Symbol;
+
+                Grid.SetRow(propValue, j+1);
                 Grid.SetColumn(propValue, 2);
                 grid.Children.Add(propValue);
+
+                j++;
             }
+
+            var image = new Image();
+            Grid.SetRow(image, 1);
+            Grid.SetRowSpan(image, j);
+            Grid.SetColumn(image, 0);
+
+            image.Source = new BitmapImage(new Uri("Resources\\" + smartphone.Image, UriKind.Relative));
+            grid.Children.Add(image);
 
             return grid;
         }
