@@ -21,12 +21,12 @@ namespace ExpertSystem
             DataContext = new Smartphone();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        async private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _fileIOService = new FileIOService("Smartphones.json");
             try
             {
-                _smartphones = _fileIOService.LoadDate();
+                _smartphones = await _fileIOService.LoadDate();
             }
             catch (Exception)
             {

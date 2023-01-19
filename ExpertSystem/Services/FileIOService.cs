@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using ExpertSystem.Model;
+using System;
+using System.Threading.Tasks;
 
 namespace ExpertSystem.Service
 {
@@ -14,27 +16,55 @@ namespace ExpertSystem.Service
             PATH=path;
         }
 
-        public List<Smartphone> LoadDate()
+        public Task<List<Smartphone>> LoadDate()
         {
-            if (!File.Exists(PATH))
+            var task = new Task<List<Smartphone>>(() =>
             {
-                File.CreateText(PATH).Dispose();
-                return new List<Smartphone>();
+                try
+                {
+                    if (!File.Exists(PATH))
+                    {
+                        File.CreateText(PATH).Dispose();
+                        return new List<Smartphone>();
+                    }
+                    using (var sr = File.OpenText(PATH))
+                    {
+                        var fileText = sr.ReadToEnd();
+                        return JsonConvert.DeserializeObject<List<Smartphone>>(fileText);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Ошибка: {e.Message}");
+                    return new List<Smartphone>();
+                }
             }
-            using (var sr = File.OpenText(PATH))
-            {
-                var fileText = sr.ReadToEnd();
-                return JsonConvert.DeserializeObject<List<Smartphone>>(fileText);
-            }
+            );
+            task.Start();
+            return task;
         }
 
-        public void SaveDate(object list)
+        public Task<bool> SaveDate(object list)
         {
-            using (StreamWriter sw = new StreamWriter(PATH))
+            var task = new Task<bool>(() =>
             {
-                string output = JsonConvert.SerializeObject((List<Smartphone>)list);
-                sw.WriteLine(output);
-            }
+                try
+                {
+                    using (StreamWriter sw = new StreamWriter(PATH))
+                    {
+                        string output = JsonConvert.SerializeObject((List<Smartphone>)list);
+                        sw.WriteLine(output);
+                    }
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Ошибка: {e.Message}");
+                    return false;
+                }
+            });
+            task.Start();
+            return task;
         }
     }
 }

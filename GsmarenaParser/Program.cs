@@ -62,4 +62,4 @@ using (var sr = new StreamReader("Sources.txt"))
     }
 }
 
-fileIOService.SaveDate(smartphones);
+await fileIOService.SaveDate(smartphones);
