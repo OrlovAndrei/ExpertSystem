@@ -66,7 +66,6 @@ namespace ExpertSystem.ComponentBuilders
                 };
                 Grid.SetRow(propName, i+1);
                 Grid.SetColumn(propName, 1);
-
                 grid.Children.Add(propName);
 
                 TextBlock propValue = new TextBlock()
