@@ -20,16 +20,19 @@ namespace ExpertSystem.ComponentBuilders
             grid.ColumnDefinitions.Add(new ColumnDefinition());
             grid.Margin = new Thickness(15.0, 15.0, 15.0, 10.0);
 
-            TextBlock name = new TextBlock();
+            TextBlock name = new TextBlock()
+            {
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Padding = new Thickness(10.0, 5.0, 10.0, 5.0),
+                FontWeight = FontWeights.Bold,
+                FontSize = 20.0,
+                Text = smartphone.Name,
+            };
             Grid.SetRow(name, 0);
             Grid.SetColumn(name, 0);
             Grid.SetColumnSpan(name, 3);
-            name.HorizontalAlignment = HorizontalAlignment.Center;
-            name.VerticalAlignment = VerticalAlignment.Center;
-            name.Padding = new Thickness(10.0, 5.0, 10.0, 5.0);
-            name.FontWeight = FontWeights.Bold;
-            name.FontSize = 20.0;
-            name.Text = smartphone.Name;
+
             grid.Children.Add(name);
 
             var image = new Image();
@@ -54,20 +57,25 @@ namespace ExpertSystem.ComponentBuilders
                 { "Камера:", $"{isCamera}" }
             };
 
-            for (int i = 0; i < propList.GetLength(0); i++)
+            for (int i = 0; i<propList.GetLength(0); i++)
             {
-                TextBlock propName = new TextBlock();
+                TextBlock propName = new TextBlock()
+                {
+                    Text = propList[i, 0],
+                    Padding = new Thickness(10.0, 0.0, 10.0, 0.0),
+                };
                 Grid.SetRow(propName, i+1);
                 Grid.SetColumn(propName, 1);
-                propName.Text = propList[i, 0];
-                propName.Padding = new Thickness(10.0, 0.0, 10.0, 0.0);
+
                 grid.Children.Add(propName);
 
-                TextBlock propValue = new TextBlock();
+                TextBlock propValue = new TextBlock()
+                {
+                    Text = propList[i, 1],
+                    Padding = new Thickness(10.0, 0.0, 10.0, 0.0),
+                };
                 Grid.SetRow(propValue, i+1);
                 Grid.SetColumn(propValue, 2);
-                propValue.Text = propList[i, 1];
-                propValue.Padding = new Thickness(10.0, 0.0, 10.0, 0.0);
                 grid.Children.Add(propValue);
             }
 
