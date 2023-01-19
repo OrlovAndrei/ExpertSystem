@@ -12,8 +12,8 @@ namespace ExpertSystem
 {
     public partial class MainWindow : Window
     {
-        private List<Smartphone> _smartphones;
-        private FileIOService _fileIOService;
+        private List<Smartphone>? _smartphones;
+        private FileIOService? _fileIOService;
 
         public MainWindow()
         {
@@ -76,18 +76,17 @@ namespace ExpertSystem
         private List<Smartphone> FilterSmartphones(List<Smartphone> smartphones)
         {
             var n = new Smartphone();
-
             return smartphones
-            .Where(s => FilterService.Filter(s.Name, searchBar))
-            .Where(s => FilterService.Filter(s.Price, tb_minPrice, tb_maxPrice))
-            .Where(s => FilterService.Filter(s.RAM, tb_minRAM, tb_maxRAM))
-            .Where(s => FilterService.Filter(s.Storage, tb_minStorage, tb_maxStorage))
-            .Where(s => FilterService.Filter(s.Size, tb_minSize, tb_maxSize))
-            .Where(s => FilterService.Filter(s.Network, lb_networks))
-            .Where(s => FilterService.Filter(s.OS, cb_OS))
-            .Where(s => FilterService.Filter(s.Resolution, cb_resolution))
-            .Where(s => FilterService.Filter(s.Company, cb_company))
-            .Where(s => FilterService.Filter(s.IsCamera, chk_camera))
+            .Where(s => FilterService.Filter(s.Name, searchBar)
+            & FilterService.Filter(s.Price, tb_minPrice, tb_maxPrice)
+            & FilterService.Filter(s.RAM, tb_minRAM, tb_maxRAM)
+            & FilterService.Filter(s.Storage, tb_minStorage, tb_maxStorage)
+            & FilterService.Filter(s.Size, tb_minSize, tb_maxSize)
+            & FilterService.Filter(s.Network, lb_networks)
+            & FilterService.Filter(s.OS, cb_OS)
+            & FilterService.Filter(s.Resolution, cb_resolution)
+            & FilterService.Filter(s.Company, cb_company)
+            & FilterService.Filter(s.IsCamera, chk_camera))
             .ToList();
         }
 
