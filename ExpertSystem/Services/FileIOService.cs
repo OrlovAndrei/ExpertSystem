@@ -20,23 +20,15 @@ namespace ExpertSystem.Service
         {
             var task = new Task<List<Smartphone>>(() =>
             {
-                try
+                if (!File.Exists(PATH))
                 {
-                    if (!File.Exists(PATH))
-                    {
-                        File.CreateText(PATH).Dispose();
-                        return new List<Smartphone>();
-                    }
-                    using (var sr = File.OpenText(PATH))
-                    {
-                        var fileText = sr.ReadToEnd();
-                        return JsonConvert.DeserializeObject<List<Smartphone>>(fileText);
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine($"Ошибка: {e.Message}");
+                    File.CreateText(PATH).Dispose();
                     return new List<Smartphone>();
+                }
+                using (var sr = File.OpenText(PATH))
+                {
+                    var fileText = sr.ReadToEnd();
+                    return JsonConvert.DeserializeObject<List<Smartphone>>(fileText);
                 }
             }
             );
@@ -48,20 +40,12 @@ namespace ExpertSystem.Service
         {
             var task = new Task<bool>(() =>
             {
-                try
+                using (StreamWriter sw = new StreamWriter(PATH))
                 {
-                    using (StreamWriter sw = new StreamWriter(PATH))
-                    {
-                        string output = JsonConvert.SerializeObject((List<Smartphone>)list);
-                        sw.WriteLine(output);
-                    }
-                    return true;
+                    string output = JsonConvert.SerializeObject((List<Smartphone>)list);
+                    sw.WriteLine(output);
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine($"Ошибка: {e.Message}");
-                    return false;
-                }
+                return true;
             });
             task.Start();
             return task;
