@@ -1,9 +1,5 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using ExpertSystem.Model;
-using System.Windows.Media.Imaging;
-using System;
-using System.Linq;
 
 namespace ExpertSystem.ComponentBuilders
 {
