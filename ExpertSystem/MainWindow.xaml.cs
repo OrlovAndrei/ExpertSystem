@@ -78,15 +78,15 @@ namespace ExpertSystem
             var n = new Smartphone();
             return smartphones
             .Where(s => FilterService.Filter(s.Name, searchBar)
-            & FilterService.Filter(s.Price, tb_minPrice, tb_maxPrice)
-            & FilterService.Filter(s.RAM, tb_minRAM, tb_maxRAM)
-            & FilterService.Filter(s.Storage, tb_minStorage, tb_maxStorage)
-            & FilterService.Filter(s.Size, tb_minSize, tb_maxSize)
-            & FilterService.Filter(s.Network, lb_networks)
-            & FilterService.Filter(s.OS, cb_OS)
-            & FilterService.Filter(s.Resolution, cb_resolution)
-            & FilterService.Filter(s.Company, cb_company)
-            & FilterService.Filter(s.IsCamera, chk_camera))
+            && FilterService.Filter(s.Price, tb_minPrice, tb_maxPrice)
+            && FilterService.Filter(s.RAM, tb_minRAM, tb_maxRAM)
+            && FilterService.Filter(s.Storage, tb_minStorage, tb_maxStorage)
+            && FilterService.Filter(s.Size, tb_minSize, tb_maxSize)
+            && FilterService.Filter(s.Network, lb_networks)
+            && FilterService.Filter(s.OS, cb_OS)
+            && FilterService.Filter(s.Resolution, cb_resolution)
+            && FilterService.Filter(s.Company, cb_company)
+            && FilterService.Filter(s.IsCamera, chk_camera))
             .ToList();
         }
 
