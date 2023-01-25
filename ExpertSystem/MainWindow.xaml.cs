@@ -30,7 +30,7 @@ namespace ExpertSystem
             }
             catch (Exception)
             {
-                Close();
+                _smartphones = new();
             }
         }
 
